@@ -7,7 +7,6 @@
 ### guardian
 ### teacher
 ### school
-### district
 ### org
 ### course (spanish 1)
 ### timeperiods (semesters, etc)
