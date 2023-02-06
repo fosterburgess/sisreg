@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGuardianRequest;
 use App\Http\Requests\UpdateGuardianRequest;
-use App\Models\Guardian;
+use App\Models\Reg\Guardian;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 

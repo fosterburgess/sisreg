@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Registration;
-use App\Models\User;
+use App\Models\Reg\Registration;
+use App\Models\Reg\User;
 use Illuminate\Auth\Access\Response;
 
 class RegistrationPolicy

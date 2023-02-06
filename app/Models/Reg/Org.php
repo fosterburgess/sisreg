@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Reg;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +15,7 @@ class Org extends Model
     public const ORG_LEVEL_TYPE_COUNTY = 'county';
     public const ORG_LEVEL_TYPE_DISTRICT = 'district';
     public const ORG_LEVEL_TYPE_VIRTUAL = 'virtual';
+    public const ORG_LEVEL_TYPE_SCHOOL = 'school';
     public const ORG_LEVEL_TYPE_PRIVATE = 'private';
     public const ORG_LEVEL_TYPE_CUSTOM = 'custom';
 

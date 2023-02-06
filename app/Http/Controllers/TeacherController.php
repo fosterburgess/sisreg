@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
-use App\Models\Teacher;
+use App\Models\Reg\Teacher;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 

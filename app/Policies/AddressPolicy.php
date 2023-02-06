@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Address;
-use App\Models\User;
+use App\Models\Reg\Address;
+use App\Models\Reg\User;
 use Illuminate\Auth\Access\Response;
 
 class AddressPolicy

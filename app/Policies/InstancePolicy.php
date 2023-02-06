@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Instance;
-use App\Models\User;
+use App\Models\Reg\Instance;
+use App\Models\Reg\User;
 use Illuminate\Auth\Access\Response;
 
 class InstancePolicy

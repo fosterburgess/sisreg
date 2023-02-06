@@ -20,6 +20,13 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    public const TYPE_TEACHER = 'teacher';
+    public const TYPE_STUDENT = 'student';
+    public const TYPE_GUARDIAN = 'guardian';
+    public const TYPE_ORG_ADMIN = 'org_admin';
+    public const TYPE_ADMIN = 'admin';
+    public const TYPE_NONE = 'none';
+
     /**
      * The attributes that are mass assignable.
      *

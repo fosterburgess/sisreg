@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSchoolRequest;
 use App\Http\Requests\UpdateSchoolRequest;
-use App\Models\School;
+use App\Models\Reg\School;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 

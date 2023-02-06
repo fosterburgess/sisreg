@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\School;
-use App\Models\User;
+use App\Models\Reg\School;
+use App\Models\Reg\User;
 use Illuminate\Auth\Access\Response;
 
 class SchoolPolicy

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTimePeriodRequest;
 use App\Http\Requests\UpdateTimePeriodRequest;
-use App\Models\TimePeriod;
+use App\Models\Reg\TimePeriod;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 

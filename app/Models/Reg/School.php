@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Reg;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class School extends Model
+class School extends Org
 {
-    protected $guarded = ['id'];
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    protected $attributes = ['level_type'=>Org::ORG_LEVEL_TYPE_SCHOOL];
 
     public function org()
     {

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAddressRequest;
 use App\Http\Requests\UpdateAddressRequest;
-use App\Models\Address;
+use App\Models\Reg\Address;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 

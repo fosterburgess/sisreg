@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Org;
-use App\Models\User;
+use App\Models\Reg\Org;
+use App\Models\Reg\User;
 use Illuminate\Auth\Access\Response;
 
 class OrgPolicy

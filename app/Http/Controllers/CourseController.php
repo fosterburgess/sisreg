@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
-use App\Models\Course;
+use App\Models\Reg\Course;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 

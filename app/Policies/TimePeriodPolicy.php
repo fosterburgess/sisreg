@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\TimePeriod;
-use App\Models\User;
+use App\Models\Reg\TimePeriod;
+use App\Models\Reg\User;
 use Illuminate\Auth\Access\Response;
 
 class TimePeriodPolicy

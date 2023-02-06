@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrgRequest;
 use App\Http\Requests\UpdateOrgRequest;
-use App\Models\Org;
+use App\Models\Reg\Org;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 

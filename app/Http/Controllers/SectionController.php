@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
-use App\Models\Section;
+use App\Models\Reg\Section;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 

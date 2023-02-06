@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRegistrationRequest;
 use App\Http\Requests\UpdateRegistrationRequest;
-use App\Models\Registration;
+use App\Models\Reg\Registration;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 

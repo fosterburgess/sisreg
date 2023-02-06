@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('external_id')->nullable();
             $table->string('vendor_id')->nullable();
             $table->string('name')->nullable();
+            $table->integer('address_id')->nullable();
             $table->string('level_type')->nullable();
+            $table->string('description')->nullable();
+            $table->text('metadata')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

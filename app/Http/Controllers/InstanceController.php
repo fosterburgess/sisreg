@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreInstanceRequest;
 use App\Http\Requests\UpdateInstanceRequest;
-use App\Models\Instance;
+use App\Models\Reg\Instance;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 

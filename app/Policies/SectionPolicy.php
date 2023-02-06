@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Section;
-use App\Models\User;
+use App\Models\Reg\Section;
+use App\Models\Reg\User;
 use Illuminate\Auth\Access\Response;
 
 class SectionPolicy
