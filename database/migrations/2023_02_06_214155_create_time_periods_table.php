@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schools', function (Blueprint $table) {
+        Schema::create('time_periods', function (Blueprint $table) {
             $table->id();
-            $table->integer('org_id');
-            $table->string('external_id')->nullable();
-            $table->string('vendor_id')->nullable();
-            $table->string('name')->nullable();
-            $table->string('description')->nullable();
-            $table->integer('address_id')->nullable();
+            $table->integer("org_id")->nullable();
+            $table->date("start_date");
+            $table->date("end_date")->nullable();
+            $table->string("type")->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('schools');
+        Schema::dropIfExists('time_periods');
     }
 };

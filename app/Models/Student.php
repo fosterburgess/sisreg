@@ -11,6 +11,8 @@ class Student extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $guarded = ['id'];
+
     public function guardians()
     {
         return $this->belongsToMany(Guardian::class);
@@ -19,5 +21,15 @@ class Student extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function registrations()
+    {
+        return $this->hasMany(Registration::class);
+    }
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
     }
 }
