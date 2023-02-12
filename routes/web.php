@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OrgController;
+use App\Models\Reg\Org;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +28,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+])->group(function () {
+    Route::resource('org', OrgController::class);
 });

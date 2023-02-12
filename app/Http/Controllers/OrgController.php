@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreOrgRequest;
 use App\Http\Requests\UpdateOrgRequest;
 use App\Models\Reg\Org;
+use App\Policies\OrgPolicy;
+use App\Services\OrgService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
@@ -29,9 +31,12 @@ class OrgController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOrgRequest $request): RedirectResponse
+    public function store(StoreOrgRequest $request, OrgService $orgService): RedirectResponse
     {
-        //
+        $this->authorize('create', [Org::class, $request]);
+        $org = $orgService->createOrg($request->validated());
+
+        return redirect()->to(route('org.show', ['org'=>$org]));
     }
 
     /**
