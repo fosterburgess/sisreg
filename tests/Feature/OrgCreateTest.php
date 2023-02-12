@@ -54,13 +54,18 @@ class OrgCreateTest extends TestCase
     {
         $toporg = Org::factory()->createOne();
         $orgadmin = $this->getUserWithRole(Constants::ROLE_ORG_ADMIN);
+        $time = microtime(true);
+        $name = "org ".$time;
         $output = $this->actingAs($orgadmin)->post('/org', [
-            'name'=>'org 1',
+            'name'=>$name,
             'parent_id'=> $toporg->id,
             'level_type' => Org::ORG_LEVEL_TYPE_DISTRICT,
         ]);
 
         $output->assertRedirect();
+
+        $org = Org::where('name', $name)->first();
+        $this->assertEquals($name, $org->name);
     }
 
     /**
