@@ -2,9 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\Constants;
 use App\Models\Reg\Org;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Http\Request;
 
 class OrgPolicy
 {
@@ -27,9 +29,12 @@ class OrgPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user, Request $request): bool
     {
-        //
+        if ($request->get('parent_id') === null) {
+            return $user->hasPermissionTo(Constants::PERM_CREATE_TOP_ORG);
+        }
+        return $user->hasPermissionTo(Constants::PERM_CREATE_ORG);
     }
 
     /**
