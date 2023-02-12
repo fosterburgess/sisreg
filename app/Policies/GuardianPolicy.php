@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Reg\Guardian;
-use App\Models\Reg\User;
+use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
 class GuardianPolicy
