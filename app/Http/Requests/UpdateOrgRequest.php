@@ -22,7 +22,14 @@ class UpdateOrgRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id' => ['number'],
+            'parent_id' => ['nullable'],
+            'name' => ['string', 'required'],
+            'level_type' => ['string', 'required'],
+            'address_id' => ['nullable'],
+            'description' => ['string','nullable'],
+            'external_id' => ['string','nullable'],
+            'vendor_id' => ['string','nullable'],
         ];
     }
 }

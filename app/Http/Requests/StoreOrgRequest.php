@@ -23,7 +23,13 @@ class StoreOrgRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'parent_id' => ['nullable'],
+            'name' => ['string', 'required'],
+            'level_type' => ['string', 'required'],
+            'address_id' => ['nullable'],
+            'description' => ['string','nullable'],
+            'external_id' => ['string','nullable'],
+            'vendor_id' => ['string','nullable'],
         ];
     }
 }
