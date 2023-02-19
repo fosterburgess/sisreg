@@ -26,6 +26,7 @@ return new class extends Migration
             $table->date('birthdate')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->string('school_id')->nullable();
             $table->integer('user_id')->nullable();
             $table->text('metadata')->nullable();
             $table->timestamps();
