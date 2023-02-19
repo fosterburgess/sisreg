@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OrgController;
+use App\Http\Controllers\TeacherController;
 use App\Models\Reg\Org;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,5 @@ Route::middleware([
     config('jetstream.auth_session'),
 ])->group(function () {
     Route::resource('org', OrgController::class);
+    Route::resource('teacher', TeacherController::class);
 });
