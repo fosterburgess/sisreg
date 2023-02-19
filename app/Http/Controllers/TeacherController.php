@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
+use App\Models\Reg\Org;
 use App\Models\Reg\Teacher;
+use App\Services\TeacherService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
@@ -29,9 +31,14 @@ class TeacherController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTeacherRequest $request): RedirectResponse
+    public function store(StoreTeacherRequest $request, TeacherService $teacherService): RedirectResponse
     {
-        //
+        dd('sdfsdfds');
+        $this->authorize('create', [Teacher::class, $request]);
+        $item = $teacherService->createTeacher($request->validated());
+
+        return redirect()->to(route('teacher.show', ['teacher'=>$item]));
+
     }
 
     /**

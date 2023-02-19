@@ -2,9 +2,12 @@
 
 namespace App\Policies;
 
+use App\Models\Constants;
+use App\Models\Reg\Org;
 use App\Models\Reg\Teacher;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Http\Request;
 
 class TeacherPolicy
 {
@@ -25,11 +28,21 @@ class TeacherPolicy
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the user can create teacher.
      */
-    public function create(User $user): bool
+    public function create(User $user, Request $request): bool
     {
-        //
+        if($user->hasPermissionTo(Constants::PERM_CREATE_TEACHER_ANY_ORG)) {
+            return true;
+        }
+        if(!$user->hasPermissionTo(Constants::PERM_CREATE_TEACHER)) {
+            return false;
+        }
+        $teacherSchoolId = (int)$request->get('school_id');
+        $usersOrgId = (int)$user->org_id;
+
+        $schoolOrg = Org::find($teacherSchoolId);
+        return in_array($usersOrgId, $schoolOrg->getMeta('parent_ids')) || $teacherSchoolId===$usersOrgId;
     }
 
     /**
