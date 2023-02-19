@@ -23,6 +23,11 @@ class Constants
     public const PERM_UPDATE_USER = 'update_user';
     public const PERM_DELETE_USER = 'delete_user';
 
+    public const PERM_CREATE_TEACHER_ANY_ORG = 'create_teacher_any_org';
+    public const PERM_CREATE_TEACHER = 'create_teacher';
+    public const PERM_UPDATE_TEACHER = 'update_teacher';
+    public const PERM_DELETE_TEACHER = 'delete_teacher';
+
     public const PERM_VIEW_STUDENT = 'view_student';
     public const PERM_UPDATE_STUDENT = 'update_student';
 

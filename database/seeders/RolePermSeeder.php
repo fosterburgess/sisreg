@@ -32,6 +32,11 @@ class RolePermSeeder
             Constants::PERM_CREATE_USER,
             Constants::PERM_UPDATE_USER,
             Constants::PERM_DELETE_USER,
+            Constants::PERM_CREATE_TEACHER_ANY_ORG,
+            Constants::PERM_CREATE_TEACHER,
+            Constants::PERM_UPDATE_TEACHER,
+            Constants::PERM_DELETE_TEACHER,
+
         ]);
 
         // 'Org admin can create orgs, create users, and assign users to be org admins one level below current level'
@@ -42,6 +47,9 @@ class RolePermSeeder
             Constants::PERM_CREATE_USER,
             Constants::PERM_UPDATE_USER,
             Constants::PERM_DELETE_USER,
+            Constants::PERM_CREATE_TEACHER,
+            Constants::PERM_UPDATE_TEACHER,
+            Constants::PERM_DELETE_TEACHER,
         ]);
 
         $role4 = Role::findOrCreate(Constants::ROLE_TEACHER)->syncPermissions([
