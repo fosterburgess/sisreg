@@ -31,12 +31,17 @@ class OrgCreateTest extends TestCase
     public function test_create_org_as_superadmin(): void
     {
         $superadmin = $this->getUserWithRole(Constants::ROLE_SUPERADMIN);
+        $name = 'org2';
         $output = $this->actingAs($superadmin)->post('/org', [
-            'name'=>'org 1',
+            'name'=> $name,
             'level_type' => Org::ORG_LEVEL_TYPE_STATE,
         ]);
 
         $output->assertRedirect();
+        $org = Org::where('name', $name)->first();
+
+        // top level should have no parent_ids in metadata
+        $this->assertEmpty($org->getMeta('parent_ids'));
     }
 
     public function test_create_org_as_org_admin_top_level_blocked(): void
@@ -50,10 +55,14 @@ class OrgCreateTest extends TestCase
         $output->assertStatus(403);
     }
 
+    /**
+     * @return void
+     */
     public function test_create_org_as_org_admin_sub_org_OK(): void
     {
         $toporg = Org::factory()->createOne();
         $orgadmin = $this->getUserWithRole(Constants::ROLE_ORG_ADMIN);
+        $orgadmin->org_id = $toporg->id;
         $time = microtime(true);
         $name = "org ".$time;
         $output = $this->actingAs($orgadmin)->post('/org', [
@@ -66,6 +75,8 @@ class OrgCreateTest extends TestCase
 
         $org = Org::where('name', $name)->first();
         $this->assertEquals($name, $org->name);
+        $this->assertContains($toporg->id, $org->getMeta('parent_ids'));
+        $this->assertCount(1, $org->getMeta('parent_ids'));
     }
 
     /**
