@@ -22,6 +22,10 @@ class RolePermSeeder
             Constants::PERM_CREATE_USER,
             Constants::PERM_UPDATE_USER,
             Constants::PERM_DELETE_USER,
+            Constants::PERM_CREATE_TEACHER_ANY_ORG,
+            Constants::PERM_CREATE_TEACHER,
+            Constants::PERM_UPDATE_TEACHER,
+            Constants::PERM_DELETE_TEACHER,
         ]);
 
         // 'Org super admin can create orgs, create users, and assign users to be org admins below current level and down all the way.'
@@ -32,11 +36,9 @@ class RolePermSeeder
             Constants::PERM_CREATE_USER,
             Constants::PERM_UPDATE_USER,
             Constants::PERM_DELETE_USER,
-            Constants::PERM_CREATE_TEACHER_ANY_ORG,
             Constants::PERM_CREATE_TEACHER,
             Constants::PERM_UPDATE_TEACHER,
             Constants::PERM_DELETE_TEACHER,
-
         ]);
 
         // 'Org admin can create orgs, create users, and assign users to be org admins one level below current level'
