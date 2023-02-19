@@ -2,6 +2,7 @@
 
 namespace App\Models\Reg;
 
+use App\Traits\HasMetadata;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,7 @@ class Org extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasMetadata;
 
     public const ORG_LEVEL_TYPE_STATE = 'state';
     public const ORG_LEVEL_TYPE_COUNTY = 'county';
