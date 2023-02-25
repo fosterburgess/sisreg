@@ -23,7 +23,7 @@ class OrgPolicy
      */
     public function view(User $user, Org $org): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -35,6 +35,11 @@ class OrgPolicy
             return $user->hasPermissionTo(Constants::PERM_CREATE_TOP_ORG);
         }
         return $user->hasPermissionTo(Constants::PERM_CREATE_ORG);
+    }
+
+    public function createTopLevel(User $user, Request $request): bool
+    {
+        return $user->hasPermissionTo(Constants::PERM_CREATE_TOP_ORG);
     }
 
     /**

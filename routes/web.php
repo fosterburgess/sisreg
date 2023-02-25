@@ -36,5 +36,6 @@ Route::middleware([
     config('jetstream.auth_session'),
 ])->group(function () {
     Route::resource('org', OrgController::class);
+    Route::get('org/create/{parent}', [OrgController::class, 'create'])->name('create-org-child');
     Route::resource('teacher', TeacherController::class);
 });

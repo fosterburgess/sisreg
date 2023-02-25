@@ -22,6 +22,8 @@ class Org extends Model
     public const ORG_LEVEL_TYPE_CUSTOM = 'custom';
 
     protected $guarded = ['id'];
+
+    public const ORG_LEVELS = [self::ORG_LEVEL_TYPE_STATE, self::ORG_LEVEL_TYPE_COUNTY, self::ORG_LEVEL_TYPE_DISTRICT, self::ORG_LEVEL_TYPE_CUSTOM, self::ORG_LEVEL_TYPE_SCHOOL];
     public function parent()
     {
         return $this->belongsTo(Org::class, 'id', 'parent_id');
