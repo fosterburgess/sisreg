@@ -15,6 +15,7 @@
 
         <!-- Styles -->
         @livewireStyles
+        @bukStyles(true)
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -40,5 +41,6 @@
         @stack('modals')
 
         @livewireScripts
+        @bukScripts(true)
     </body>
 </html>
