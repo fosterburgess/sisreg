@@ -19,9 +19,11 @@ class OrgTable extends DataTableComponent
     {
         return [
             Column::make("Name", "name")
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
             Column::make("Level", "level_type")
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
         ];
     }
 }
