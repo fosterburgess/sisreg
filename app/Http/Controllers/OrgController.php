@@ -67,9 +67,17 @@ class OrgController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Org $org): Response
+    public function edit(Request $request, Org $org): Response
     {
-        //
+        $orgTypes = Org::ORG_LEVELS;
+        if ($org->parent!==null) {
+            $orgTypes = [Org::ORG_LEVEL_TYPE_STATE];
+            $this->authorize('createTopLevel', [Org::class, $request]);
+        }
+        $orgTypes = collect($orgTypes)->map(function($k) {
+            return ['label'=>$k, 'value'=>$k];
+        })->toArray();
+        return response()->view('org.edit', compact('org', 'orgTypes'));
     }
 
     /**
