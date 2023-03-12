@@ -11,6 +11,13 @@ use App\Services\OrgService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use ProtoneMedia\Splade\Facades\Toast;
+use ProtoneMedia\Splade\FormBuilder\Input;
+use ProtoneMedia\Splade\FormBuilder\Password;
+use ProtoneMedia\Splade\FormBuilder\Select;
+use ProtoneMedia\Splade\FormBuilder\Submit;
+use ProtoneMedia\Splade\SpladeForm;
+use ProtoneMedia\Splade\SpladeTable;
 
 class OrgController extends Controller
 {
@@ -23,7 +30,14 @@ class OrgController extends Controller
         $user = $request->user();
         $canCreateTopLevel = $user->hasPermissionTo(Constants::PERM_CREATE_TOP_ORG);
 
-        return response()->view('org.index', compact('orgs', 'canCreateTopLevel'));
+        $orgTable =  SpladeTable::for(Org::class)
+            ->withGlobalSearch()
+            ->column('name')
+            ->column('level_type')
+            ->column('action')
+            ->paginate(15);
+
+        return response()->view('org.index', compact('orgTable', 'orgs', 'canCreateTopLevel'));
     }
 
     /**
@@ -40,7 +54,16 @@ class OrgController extends Controller
         $orgTypes = collect($orgTypes)->map(function($k) {
             return ['label'=>$k, 'value'=>$k];
         })->toArray();
-        return response()->view('org.create', compact('orgTypes'));
+
+        $form = SpladeForm::make()
+            ->action(route('org.store'))
+            ->fields([
+                Input::make('name')->label('Org Name'),
+                Select::make('level_type')->options($orgTypes)->label('Level'),
+                Submit::make()->label('Create')->class("py-0 px-0"),
+            ]);
+
+        return response()->view('org.create', compact('form', 'orgTypes'));
     }
 
     /**
@@ -77,7 +100,17 @@ class OrgController extends Controller
         $orgTypes = collect($orgTypes)->map(function($k) {
             return ['label'=>$k, 'value'=>$k];
         })->toArray();
-        return response()->view('org.edit', compact('org', 'orgTypes'));
+
+        $form = SpladeForm::make()
+            ->action(route('org.store'))
+            ->fill($org)
+            ->fields([
+                Input::make('name')->label('Org Name'),
+                Select::make('level_type')->options($orgTypes)->label('Level'),
+                Submit::make()->label('Save')->class("mt-4 py-0 px-0"),
+            ]);
+
+        return response()->view('org.edit', compact('form','org', 'orgTypes'));
     }
 
     /**
