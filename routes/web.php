@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\OrgController;
 use App\Http\Controllers\TeacherController;
-use App\Models\Reg\Org;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,10 +10,28 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::middleware(['splade'])->group(function () {
+    Route::get('/', fn () => view('home'))->name('home');
+    Route::get('/docs', fn () => view('docs'))->name('docs');
+
+    // Registers routes to support the interactive components...
+    Route::spladeWithVueBridge();
+
+    // Registers routes to support password confirmation in Form and Link components...
+    Route::spladePasswordConfirmation();
+
+    // Registers routes to support Table Bulk Actions and Exports...
+    Route::spladeTable();
+
+    // Registers routes to support async File Uploads with Filepond...
+    Route::spladeUploads();
+});
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,10 +48,20 @@ Route::middleware([
 });
 
 Route::middleware([
+    'splade',
     'auth:sanctum',
     config('jetstream.auth_session'),
 ])->group(function () {
+
     Route::resource('org', OrgController::class);
     Route::get('org/create/{parent}', [OrgController::class, 'create'])->name('create-org-child');
     Route::resource('teacher', TeacherController::class);
+
+    Route::spladeWithVueBridge();
+    // Registers routes to support password confirmation in Form and Link components...
+    Route::spladePasswordConfirmation();
+    // Registers routes to support Table Bulk Actions and Exports...
+    Route::spladeTable();
+    // Registers routes to support async File Uploads with Filepond...
+    Route::spladeUploads();
 });
