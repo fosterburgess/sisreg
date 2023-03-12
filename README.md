@@ -66,3 +66,11 @@ similar (will look at later).
 TEST:
 Create teacher as super admin (any or no school)
 Create teacher as org admin(?)
+
+
+# Mar 12 2023
+Tested out bladewind, blade-ui-kit and others, 
+testing out 'splade' - might be 'best' middle ground.
+
+Splade.dev - allows for some vue, but is more 
+blade-oriented with some middleware helpers.  
