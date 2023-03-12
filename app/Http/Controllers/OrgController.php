@@ -35,7 +35,7 @@ class OrgController extends Controller
             ->column('name')
             ->column('level_type')
             ->column('action')
-            ->paginate(15);
+            ->paginate(5);
 
         return response()->view('org.index', compact('orgTable', 'orgs', 'canCreateTopLevel'));
     }
@@ -102,7 +102,8 @@ class OrgController extends Controller
         })->toArray();
 
         $form = SpladeForm::make()
-            ->action(route('org.store'))
+            ->action(route('org.update', $org))
+            ->method('put')
             ->fill($org)
             ->fields([
                 Input::make('name')->label('Org Name'),
@@ -110,7 +111,7 @@ class OrgController extends Controller
                 Submit::make()->label('Save')->class("mt-4 py-0 px-0"),
             ]);
 
-        return response()->view('org.edit', compact('form','org', 'orgTypes'));
+        return response()->view('org.edit', compact('form','org'));
     }
 
     /**
@@ -118,7 +119,11 @@ class OrgController extends Controller
      */
     public function update(UpdateOrgRequest $request, Org $org): RedirectResponse
     {
-        //
+        $this->authorize('update', $org);
+        $org->fill($request->validated());
+        $org->save();
+
+        return response()->redirectTo('/org');
     }
 
     /**

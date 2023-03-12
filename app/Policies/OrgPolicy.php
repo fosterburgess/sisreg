@@ -47,7 +47,7 @@ class OrgPolicy
      */
     public function update(User $user, Org $org): bool
     {
-        //
+        return $user->hasPermissionTo(Constants::PERM_UPDATE_ORG);
     }
 
     /**
