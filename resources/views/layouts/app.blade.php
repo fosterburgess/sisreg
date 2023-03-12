@@ -14,10 +14,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" />
 
         <!-- Styles -->
-        <link href="{{ asset('vendor/bladewind/css/animate.min.css') }}" rel="stylesheet" />
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
