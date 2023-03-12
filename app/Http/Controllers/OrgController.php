@@ -31,7 +31,7 @@ class OrgController extends Controller
         $canCreateTopLevel = $user->hasPermissionTo(Constants::PERM_CREATE_TOP_ORG);
 
         $orgTable =  SpladeTable::for(Org::class)
-            ->withGlobalSearch()
+            ->withGlobalSearch('Search',['name', 'level_type'])
             ->column('name')
             ->column('level_type')
             ->column('action')
